@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cloud.ERP.Module.BusinessObjects.Base;
 using Cloud.ERP.Module.BusinessObjects.MasterData;
+using Cloud.ERP.Module.BusinessObjects.Stock;
 using DevExpress.Xpo;
 
 namespace Cloud.ERP.Module.BusinessObjects.Product
@@ -41,6 +42,57 @@ namespace Cloud.ERP.Module.BusinessObjects.Product
         {
             get => GetPropertyValue<ProductCategory>();
             set => SetPropertyValue(nameof(Category), value);
+        }
+        [Association("Product-InventoryListItems")]
+        public XPCollection<InventoryList> InventoryListItems => GetCollection<InventoryList>();
+
+        public string Notes
+        {
+            get => GetPropertyValue<string>();
+            set => SetPropertyValue(nameof(Notes), value);
+        }
+
+        public bool IsActive
+        {
+            get => GetPropertyValue<bool>();
+            set => SetPropertyValue(nameof(IsActive), value);
+        }
+
+        public decimal TotalPrice
+        {
+            get
+            {
+                _itemSumPrice = InventoryListItems.Sum(x => x.Price);
+                return _itemSumPrice;
+            }
+        }
+
+        public decimal RemPrice
+        {
+            get
+            {
+                _itemSumPrice = InventoryListItems.Where(x => x.IsActive && x.IsSold == false).Sum(x => x.Price);
+                return _itemSumPrice;
+            }
+        }
+
+        public double? InventoryQuantity
+        {
+            get
+            {
+                _inventoryCount = InventoryListItems.Count != 0 ? InventoryListItems.Count(x => x.IsActive) : 0;
+                return _inventoryCount;
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            IsActive = true;
         }
 
         #endregion
