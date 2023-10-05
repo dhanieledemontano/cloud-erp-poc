@@ -16,6 +16,10 @@ namespace Cloud.ERP.Module.BusinessObjects.Base
         #region Members
         private HashSet<string> _changedProperties;
         private List<string> _lastChangedProperties;
+
+        [Persistent(nameof(Oid)), Key(true), VisibleInListView(false),
+         VisibleInDetailView(false), VisibleInLookupListView(false),
+         MemberDesignTimeVisibility(false)]
         private Guid _oid = Guid.Empty;
         #endregion
 

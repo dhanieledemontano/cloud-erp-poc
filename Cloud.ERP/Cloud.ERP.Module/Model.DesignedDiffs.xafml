@@ -1,5 +1,16 @@
-﻿<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="Cloud.ERP">
-  <Views>
-  </Views>
+  <NavigationItems>
+    <Items>
+      <Item Id="Product" Caption="Product" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Brand" Index="0" Caption="Brand" ViewId="ProductBrand_ListView" IsNewNode="True" />
+          <Item Id="ProductList" Caption="Product" ViewId="ProductBase_ListView" Index="1" IsNewNode="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="23.1.4.0" IsNewNode="True" />
+  </SchemaModules>
 </Application>

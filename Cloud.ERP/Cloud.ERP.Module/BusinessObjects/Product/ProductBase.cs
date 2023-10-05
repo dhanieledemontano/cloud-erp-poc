@@ -23,15 +23,6 @@ namespace Cloud.ERP.Module.BusinessObjects.Product
         #endregion
 
         #region Properties
-        [MemberDesignTimeVisibility(false), PersistentAlias(MasterDataBase.LocalizationAlias)]
-        public string LocalizedName
-        {
-            get
-            {
-                _localizedName ??= new Lazy<string>(() => EvaluateAlias().ToString());
-                return _localizedName.Value;
-            }
-        }
 
         public ProductBrand Brand
         {
@@ -56,6 +47,16 @@ namespace Cloud.ERP.Module.BusinessObjects.Product
         {
             get => GetPropertyValue<bool>();
             set => SetPropertyValue(nameof(IsActive), value);
+        }
+
+        [MemberDesignTimeVisibility(false), PersistentAlias(MasterDataBase.LocalizationAlias)]
+        public string LocalizedName
+        {
+            get
+            {
+                _localizedName ??= new Lazy<string>(() => EvaluateAlias().ToString());
+                return _localizedName.Value;
+            }
         }
 
         public decimal TotalPrice

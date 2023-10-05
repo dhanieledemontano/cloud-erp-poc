@@ -23,4 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Cloud.ERP.Module\Cloud.ERP.Module.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\SvgImages\" />
+  </ItemGroup>
 </Project>
