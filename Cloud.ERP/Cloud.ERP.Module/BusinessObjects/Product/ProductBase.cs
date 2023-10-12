@@ -29,9 +29,10 @@ namespace Cloud.ERP.Module.BusinessObjects.Product
             get => GetPropertyValue<ProductBrand>();
             set => SetPropertyValue(nameof(Brand), value);
         }
-        public ProductCategory Category
+
+        public ProductCategoryBase Category
         {
-            get => GetPropertyValue<ProductCategory>();
+            get => GetPropertyValue<ProductCategoryBase>();
             set => SetPropertyValue(nameof(Category), value);
         }
         [Association("Product-InventoryListItems")]

@@ -6,6 +6,13 @@
         <Items IsNewNode="True">
           <Item Id="Brand" Index="0" Caption="Brand" ViewId="ProductBrand_ListView" IsNewNode="True" />
           <Item Id="ProductList" Caption="Product" ViewId="ProductBase_ListView" Index="1" IsNewNode="True" />
+          <Item Id="Category" Caption="Category" ViewId="" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="ProductCategory" Caption="Category" Index="0" ViewId="ProductCategoryBase_ListView" IsNewNode="True" />
+              <Item Id="ProductSubCategory" Caption="Sub Category" Index="1" ViewId="ProductCategorySub_ListView" IsNewNode="True" />
+              <Item Id="@3829a3de-6a23-46d5-a0c5-c5d8fe18faf3" Caption="List Test" ViewId="ProductCategoryBase_ListToList" IsNewNode="True" />
+            </Items>
+          </Item>
         </Items>
       </Item>
     </Items>
@@ -13,4 +20,15 @@
   <SchemaModules>
     <SchemaModule Name="SystemModule" Version="23.1.4.0" IsNewNode="True" />
   </SchemaModules>
+  <Views>
+    <ListView Id="ProductCategoryBase_ListToList" ClassName="Cloud.ERP.Module.BusinessObjects.Product.ProductCategoryBase" MasterDetailMode="ListViewAndDetailView" DataAccessMode="Client" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="CreatedOn" PropertyName="CreatedOn" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ModifiedOn" PropertyName="ModifiedOn" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Name" PropertyName="Name" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Description" PropertyName="Description" Index="1" IsNewNode="True" />
+      </Columns>
+    </ListView>
+  </Views>
 </Application>

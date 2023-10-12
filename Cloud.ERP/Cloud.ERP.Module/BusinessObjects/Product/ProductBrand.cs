@@ -21,6 +21,12 @@ namespace Cloud.ERP.Module.BusinessObjects.Product
             set => SetPropertyValue(nameof(Name), value);
         }
 
+        public int BrandNo
+        {
+            get => GetPropertyValue<int>();
+            set => SetPropertyValue(nameof(BrandNo), value);
+        }
+
         public string Description
         {
             get => GetPropertyValue<string>();
