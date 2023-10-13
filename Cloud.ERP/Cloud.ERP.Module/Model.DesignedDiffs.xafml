@@ -21,7 +21,7 @@
     <SchemaModule Name="SystemModule" Version="23.1.4.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
-    <ListView Id="ProductCategoryBase_ListToList" ClassName="Cloud.ERP.Module.BusinessObjects.Product.ProductCategoryBase" MasterDetailMode="ListViewAndDetailView" DataAccessMode="Client" IsNewNode="True">
+    <ListView Id="ProductCategoryBase_ListToList" ClassName="Cloud.ERP.Module.BusinessObjects.Product.ProductCategoryBase" MasterDetailMode="ListViewAndDetailView" DataAccessMode="Server" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="CreatedOn" PropertyName="CreatedOn" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="ModifiedOn" PropertyName="ModifiedOn" Index="-1" IsNewNode="True" />
@@ -30,5 +30,6 @@
         <ColumnInfo Id="Description" PropertyName="Description" Index="1" IsNewNode="True" />
       </Columns>
     </ListView>
+    <ListView Id="ProductCategorySub_ListView" DataAccessMode="Server" />
   </Views>
 </Application>
