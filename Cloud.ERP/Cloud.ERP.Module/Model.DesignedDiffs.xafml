@@ -30,6 +30,11 @@
         <ColumnInfo Id="Description" PropertyName="Description" Index="1" IsNewNode="True" />
       </Columns>
     </ListView>
+    <DetailView Id="ProductCategorySub_DetailView">
+      <Items>
+        <PropertyEditor Id="Description" AllowEdit="True" />
+      </Items>
+    </DetailView>
     <ListView Id="ProductCategorySub_ListView" DataAccessMode="Server" />
   </Views>
 </Application>
