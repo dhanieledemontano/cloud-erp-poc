@@ -10,7 +10,7 @@
         <LayoutGroup Id="Main">
           <LayoutGroup Id="SimpleEditors">
             <LayoutGroup Id="ProductCategoryBase">
-              <LayoutItem Id="Name" CustomCSSClassName="class-test" />
+              <LayoutItem Id="Name" CustomCSSClassName="" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>

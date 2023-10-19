@@ -22,7 +22,10 @@ namespace Cloud.ERP.Module.BusinessObjects.Product
         #endregion
         #region Constructor
 
-        public ProductCategoryBase(Session session) : base(session) { }
+        public ProductCategoryBase(Session session) : base(session)
+        {
+            Console.WriteLine("test");
+        }
         #endregion
 
         #region Events
@@ -68,12 +71,19 @@ namespace Cloud.ERP.Module.BusinessObjects.Product
             get => GetPropertyValue<int>();
             set => SetPropertyValue(nameof(CategoryNo), value);
         }
+
+        public bool IsActive
+        {
+            get => GetPropertyValue<bool>();
+            set => SetPropertyValue(nameof(IsActive), value);
+        }
         #endregion
 
         #region Methods
         public override void AfterConstruction()
         {
             base.AfterConstruction();
+            IsActive = true;
         }
         #endregion
     }

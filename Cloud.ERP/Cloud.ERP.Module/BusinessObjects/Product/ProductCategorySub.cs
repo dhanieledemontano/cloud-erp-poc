@@ -47,6 +47,20 @@ namespace Cloud.ERP.Module.BusinessObjects.Product
             get => GetPropertyValue<int>();
             set => SetPropertyValue(nameof(SubCategoryNo), value);
         }
+
+        public bool IsActive
+        {
+            get => GetPropertyValue<bool>();
+            set => SetPropertyValue(nameof(IsActive), value);
+        }
+        #endregion
+
+        #region Methods
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            IsActive = true;
+        }
         #endregion
     }
 }

@@ -4,6 +4,9 @@ using DevExpress.ExpressApp.Blazor.DesignTime;
 using DevExpress.ExpressApp.Blazor.Services;
 using DevExpress.ExpressApp.Design;
 using DevExpress.ExpressApp.Utils;
+using DevExpress.Xpo.Logger;
+using DevExpress.Xpo.Logger.Transport;
+using Host = Microsoft.Extensions.Hosting.Host;
 
 namespace Cloud.ERP.Blazor.Server;
 
@@ -12,6 +15,8 @@ public class Program : IDesignTimeApplicationFactory {
         return args.Any(arg => arg.TrimStart('/').TrimStart('-').ToLower() == argument.ToLower());
     }
     public static int Main(string[] args) {
+        LogManager.SetTransport(new NamedPipeLogger("XPOProfilerNamedPipe"));
+
         if(ContainsArgument(args, "help") || ContainsArgument(args, "h")) {
             Console.WriteLine("Updates the database when its version does not match the application's version.");
             Console.WriteLine();
