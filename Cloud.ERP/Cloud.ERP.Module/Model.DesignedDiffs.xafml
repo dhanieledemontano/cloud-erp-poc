@@ -2,7 +2,7 @@
 <Application Title="Cloud.ERP">
   <NavigationItems>
     <Items>
-      <Item Id="Product" Caption="Product" IsNewNode="True">
+      <Item Id="Product" Caption="Product" Index="0" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="Brand" Index="0" Caption="Brand" ViewId="ProductBrand_ListView" IsNewNode="True" />
           <Item Id="ProductList" Caption="Product" ViewId="ProductBase_ListView" Index="1" IsNewNode="True" />
@@ -13,6 +13,11 @@
               <Item Id="@3829a3de-6a23-46d5-a0c5-c5d8fe18faf3" Caption="List Test" ViewId="ProductCategoryBase_ListToList" IsNewNode="True" />
             </Items>
           </Item>
+        </Items>
+      </Item>
+      <Item Id="Settings" Caption="Settings" Index="1" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Connection" Caption="Connection" ViewId="ConfigDb_ListView" ImageName="EditConnection" IsNewNode="True" />
         </Items>
       </Item>
     </Items>

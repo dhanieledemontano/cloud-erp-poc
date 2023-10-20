@@ -5,6 +5,26 @@
     <SchemaModule Name="SystemModule" Version="23.1.4.0" IsNewNode="True" />
   </SchemaModules>
   <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor">
+    <DetailView Id="ConfigDb_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="SetDatabaseContainer" ActionContainer="SetDatabase" Caption="SetDatabaseContainer(7)" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ConfigDb" RelativeSize="100">
+              <LayoutItem Id="ConnectionName" RelativeSize="4.976671850699844" />
+              <LayoutItem Id="ConnectionValue" RelativeSize="3.7325038880248833" />
+              <LayoutItem Id="IsActive" Index="2" RelativeSize="3.7325038880248833" Removed="True" />
+              <LayoutGroup Id="SetDatabaseBtnContainer" Direction="Horizontal" Caption="Set Database Container" IsNewNode="True">
+                <LayoutItem Id="IsActive" Index="2" ViewItem="IsActive" RelativeSize="3.7325038880248833" ShowCaption="" IsNewNode="True" />
+                <LayoutItem Id="SetDatabaseContainer" ViewItem="SetDatabaseContainer" Index="3" RelativeSize="87.55832037325038" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="ProductCategoryBase_DetailView">
       <Layout>
         <LayoutGroup Id="Main">
