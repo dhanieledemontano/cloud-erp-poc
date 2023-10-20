@@ -35,6 +35,7 @@
         <ColumnInfo Id="Description" PropertyName="Description" Index="1" IsNewNode="True" />
       </Columns>
     </ListView>
+    <ListView Id="ProductCategoryBase_ListView" DataAccessMode="Server" />
     <DetailView Id="ProductCategorySub_DetailView">
       <Items>
         <PropertyEditor Id="Description" AllowEdit="True" />
