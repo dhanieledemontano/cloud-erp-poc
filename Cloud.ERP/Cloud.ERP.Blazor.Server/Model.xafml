@@ -7,7 +7,8 @@
   <Views DefaultListEditor="DevExpress.ExpressApp.Blazor.Editors.DxGridListEditor">
     <DetailView Id="ConfigDb_DetailView">
       <Items>
-        <ActionContainerViewItem Id="SetDatabaseContainer" ActionContainer="SetDatabase" Caption="SetDatabaseContainer(7)" IsNewNode="True" />
+        <ActionContainerViewItem Id="SetDatabaseContainer" ActionContainer="SetDatabase" Caption="Set Database Container" IsNewNode="True" />
+        <ActionContainerViewItem Id="ViewSettingsContainer" ActionContainer="ViewSettings" Caption="View Connection Settings" IsNewNode="True" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
@@ -17,8 +18,9 @@
               <LayoutItem Id="ConnectionValue" RelativeSize="3.7325038880248833" />
               <LayoutItem Id="IsActive" Index="2" RelativeSize="3.7325038880248833" Removed="True" />
               <LayoutGroup Id="SetDatabaseBtnContainer" Direction="Horizontal" Caption="Set Database Container" IsNewNode="True">
-                <LayoutItem Id="IsActive" Index="2" ViewItem="IsActive" RelativeSize="3.7325038880248833" ShowCaption="" IsNewNode="True" />
-                <LayoutItem Id="SetDatabaseContainer" ViewItem="SetDatabaseContainer" Index="3" RelativeSize="87.55832037325038" IsNewNode="True" />
+                <LayoutItem Id="IsActive" Index="0" ViewItem="IsActive" RelativeSize="3.7325038880248833" ShowCaption="" IsNewNode="True" />
+                <LayoutItem Id="SetDatabaseContainer" ViewItem="SetDatabaseContainer" Index="1" RelativeSize="87.55832037325038" IsNewNode="True" />
+                <LayoutItem Id="ViewSettingsContainer" ViewItem="ViewSettingsContainer" Index="2" RelativeSize="87.55832037325038" IsNewNode="True" />
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
@@ -26,12 +28,22 @@
       </Layout>
     </DetailView>
     <DetailView Id="ProductCategoryBase_DetailView">
+      <Items>
+        <ActionContainerViewItem Id="GetProductSubCat" ActionContainer="GetProductSubCat" Caption="Get Product Sub Cat" IsNewNode="True" />
+      </Items>
       <Layout>
-        <LayoutGroup Id="Main">
-          <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="ProductCategoryBase">
-              <LayoutItem Id="Name" CustomCSSClassName="" />
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="21.15085536547434">
+            <LayoutGroup Id="ProductCategoryBase" RelativeSize="100">
+              <LayoutItem Id="Name" CustomCSSClassName="" RelativeSize="23.529411764705884" />
+              <LayoutItem Id="Description" RelativeSize="17.647058823529413" />
+              <LayoutItem Id="CategoryNo" RelativeSize="17.647058823529413" />
+              <LayoutItem Id="IsActive" RelativeSize="17.647058823529413" />
+              <LayoutItem Id="GetProductSubCat" ViewItem="GetProductSubCat" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
             </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SubCategoryItems_Group" Direction="Vertical" RelativeSize="78.84914463452566" Caption="Sub Category Items" Index="1">
+            <LayoutItem Id="SubCategoryItems" RelativeSize="100" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
