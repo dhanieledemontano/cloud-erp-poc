@@ -10,9 +10,11 @@ using Microsoft.Extensions.Configuration.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 using System.Collections;
+using System.Data.SqlClient;
 using System.Dynamic;
 using DevExpress.DataAccess.Native.Web;
 using DevExpress.Pdf.Native.BouncyCastle.Asn1.Ocsp;
+using DevExpress.Xpo.DB;
 
 namespace Cloud.ERP.Blazor.Server.Controllers
 {
@@ -39,9 +41,17 @@ namespace Cloud.ERP.Blazor.Server.Controllers
         private void ActionButton_Execute(Object sender, SimpleActionExecuteEventArgs e)
         {
             var os = this.ObjectSpace as XPObjectSpace;
-            var uow = os.Session.CreateNewSession();
-            string sql = "UPDATE [dbo].[ConfigDb] SET [IsActive] = 1 WHERE [Oid] = '" + ((ConfigDb)View.CurrentObject).Oid + "'";
-            uow.ExecuteNonQuery(sql);
+            var uow = os?.Session.CreateNewSession();
+            string sql = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
+
+            ParameterValue isActiveParam = new ParameterValue();
+            isActiveParam.DBTypeName = "int";
+            isActiveParam.Value = true;
+            
+            ParameterValue oIdParam = new ParameterValue();
+            oIdParam.DBTypeName = "guid";
+            oIdParam.Value = ((ConfigDb)View.CurrentObject).Oid;
+            uow.ExecuteNonQuery(sql, new QueryParameterCollection(isActiveParam, oIdParam));
 
             string sqlselect = "SELECT * FROM [dbo].[ConfigDb]";
             var result = uow.ExecuteQuery(sqlselect);
@@ -49,8 +59,10 @@ namespace Cloud.ERP.Blazor.Server.Controllers
             {
                 if ((Guid)item.Values[0] != ((ConfigDb)View.CurrentObject).Oid)
                 {
-                    string sqlupd = "UPDATE [dbo].[ConfigDb] SET [IsActive] = 0 WHERE [Oid] = '" + (Guid)item.Values[0] + "'";
-                    uow.ExecuteNonQuery(sqlupd);
+                    isActiveParam.Value = false;
+                    oIdParam.Value = (Guid)item.Values[0];
+                    string sqlUpd = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
+                    uow.ExecuteNonQuery(sqlUpd, new QueryParameterCollection(isActiveParam, oIdParam));
                 }
             }
 
