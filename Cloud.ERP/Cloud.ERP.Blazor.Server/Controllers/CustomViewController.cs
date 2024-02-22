@@ -53,7 +53,8 @@ namespace Cloud.ERP.Blazor.Server.Controllers
             oIdParam.Value = ((ConfigDb)View.CurrentObject).Oid;
             //uow.ExecuteNonQuery(sql, new QueryParameterCollection(isActiveParam, oIdParam));
 
-            string sqlselect = "SELECT * FROM [dbo].[ConfigDb]";
+            //string sqlselect = "SELECT * FROM [dbo].[ConfigDb]";
+            string sqlselect = "SELECT * FROM \"ConfigDb\" ";
             var result = uow.ExecuteQuery(sqlselect);
             foreach (var item in result.ResultSet[0].Rows)
             {
