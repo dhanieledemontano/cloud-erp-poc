@@ -42,7 +42,7 @@ namespace Cloud.ERP.Blazor.Server.Controllers
         {
             var os = this.ObjectSpace as XPObjectSpace;
             var uow = os?.Session.CreateNewSession();
-            string sql = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
+            //string sql = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
 
             ParameterValue isActiveParam = new ParameterValue();
             isActiveParam.DBTypeName = "int";
@@ -51,7 +51,7 @@ namespace Cloud.ERP.Blazor.Server.Controllers
             ParameterValue oIdParam = new ParameterValue();
             oIdParam.DBTypeName = "guid";
             oIdParam.Value = ((ConfigDb)View.CurrentObject).Oid;
-            uow.ExecuteNonQuery(sql, new QueryParameterCollection(isActiveParam, oIdParam));
+            //uow.ExecuteNonQuery(sql, new QueryParameterCollection(isActiveParam, oIdParam));
 
             string sqlselect = "SELECT * FROM [dbo].[ConfigDb]";
             var result = uow.ExecuteQuery(sqlselect);
@@ -61,8 +61,8 @@ namespace Cloud.ERP.Blazor.Server.Controllers
                 {
                     isActiveParam.Value = false;
                     oIdParam.Value = (Guid)item.Values[0];
-                    string sqlUpd = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
-                    uow.ExecuteNonQuery(sqlUpd, new QueryParameterCollection(isActiveParam, oIdParam));
+                    //string sqlUpd = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
+                    //uow.ExecuteNonQuery(sqlUpd, new QueryParameterCollection(isActiveParam, oIdParam));
                 }
             }
 

@@ -29,24 +29,25 @@
     </DetailView>
     <DetailView Id="ProductCategoryBase_DetailView">
       <Items>
-        <ActionContainerViewItem Id="GetProductSubCat" ActionContainer="GetProductSubCat" Caption="Get Product Sub Cat" IsNewNode="True" />
+        <ActionContainerViewItem Id="GetProductSubCatContainer" ActionContainer="GetProductSubCat" Caption="Load Sub Categories(MSSQL)" IsNewNode="True" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="21.15085536547434">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="17.107309486780714">
             <LayoutGroup Id="ProductCategoryBase" RelativeSize="100">
-              <LayoutItem Id="Name" CustomCSSClassName="" RelativeSize="23.529411764705884" />
-              <LayoutItem Id="Description" RelativeSize="17.647058823529413" />
-              <LayoutItem Id="CategoryNo" RelativeSize="17.647058823529413" />
-              <LayoutItem Id="IsActive" RelativeSize="17.647058823529413" />
-              <LayoutItem Id="GetProductSubCat" ViewItem="GetProductSubCat" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
+              <LayoutItem Id="Name" CustomCSSClassName="" RelativeSize="29.09090909090909" />
+              <LayoutItem Id="Description" RelativeSize="21.818181818181817" />
+              <LayoutItem Id="CategoryNo" RelativeSize="21.818181818181817" />
+              <LayoutItem Id="IsActive" RelativeSize="27.272727272727273" />
+              <LayoutItem Id="GetProductSubCatContainer" ViewItem="GetProductSubCatContainer" Index="4" RelativeSize="4.043545878693624" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="SubCategoryItems_Group" Direction="Vertical" RelativeSize="78.84914463452566" Caption="Sub Category Items" Index="1">
+          <LayoutGroup Id="SubCategoryItems_Group" Direction="Vertical" RelativeSize="78.84914463452566" Caption="Sub Category Items" Index="2">
             <LayoutItem Id="SubCategoryItems" RelativeSize="100" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="ProductCategoryBase_ListView" DataAccessMode="Server" />
   </Views>
 </Application>

@@ -26,6 +26,7 @@
     <ProjectReference Include="..\Cloud.ERP.Module\Cloud.ERP.Module.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controllers\CustomAction\" />
     <Folder Include="Images\SvgImages\" />
   </ItemGroup>
   <ItemGroup>
