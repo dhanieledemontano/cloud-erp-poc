@@ -44,6 +44,8 @@ namespace Cloud.ERP.Blazor.Server.Controllers
             var uow = os?.Session.CreateNewSession();
             //string sql = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
 
+            ReadAppsettingsJson();
+
             ParameterValue isActiveParam = new ParameterValue();
             isActiveParam.DBTypeName = "int";
             isActiveParam.Value = true;
@@ -94,20 +96,31 @@ namespace Cloud.ERP.Blazor.Server.Controllers
                 ShowNotification("Error", InformationType.Error, "An error has occurred");
         }
 
-        private bool UpdateAppsettings(string connectionValue)
+        (string json, string appSettingsPath, string dbTypeString) ReadAppsettingsJson()
         {
             var appSettingsPath = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "appsettings.json");
             var json = File.ReadAllText(appSettingsPath);
             var jsonSettings = new JsonSerializerSettings();
+            dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(json, jsonSettings);
+            string dbTypeString = config.ConnectionStrings.ConnectionString;
+            Console.WriteLine(dbTypeString);
+            return (json: json, appSettingsPath: appSettingsPath, dbTypeString: dbTypeString);
+        }
+
+        private bool UpdateAppsettings(string connectionValue)
+        {
+            var currentAppSettings = ReadAppsettingsJson();
+
+            var jsonSettings = new JsonSerializerSettings();
             jsonSettings.Converters.Add(new ExpandoObjectConverter());
             jsonSettings.Converters.Add(new StringEnumConverter());
 
-            dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(json, jsonSettings);
+            dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(currentAppSettings.json, jsonSettings);
             config.ConnectionStrings.ConnectionString = connectionValue;
             config.ConnectionStrings.EasyTestConnectionString = connectionValue;
 
             var newJson = JsonConvert.SerializeObject(config, Formatting.Indented, jsonSettings);
-            Task writeToFile = WriteToFile(appSettingsPath, newJson);
+            Task writeToFile = WriteToFile(currentAppSettings.appSettingsPath, newJson);
             if (writeToFile.IsCompleted)
                 return true;
             return false;
