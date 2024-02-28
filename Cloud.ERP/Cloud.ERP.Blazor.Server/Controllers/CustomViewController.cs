@@ -12,9 +12,14 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Data.SqlClient;
 using System.Dynamic;
+using Cloud.ERP.Module.QueryExecutor;
+using Cloud.ERP.Module.QueryExecutor.Implementation;
 using DevExpress.DataAccess.Native.Web;
 using DevExpress.Pdf.Native.BouncyCastle.Asn1.Ocsp;
-using DevExpress.Xpo.DB;
+using Microsoft.AspNetCore.Components;
+using ParameterValue = DevExpress.Xpo.DB.ParameterValue;
+using Microsoft.JSInterop;
+using DevExpress.ExpressApp.Blazor;
 
 namespace Cloud.ERP.Blazor.Server.Controllers
 {
@@ -42,9 +47,10 @@ namespace Cloud.ERP.Blazor.Server.Controllers
         {
             var os = this.ObjectSpace as XPObjectSpace;
             var uow = os?.Session.CreateNewSession();
-            //string sql = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
 
-            ReadAppsettingsJson();
+            #region testcode
+            //string sql = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
+            #endregion
 
             ParameterValue isActiveParam = new ParameterValue();
             isActiveParam.DBTypeName = "int";
@@ -53,19 +59,32 @@ namespace Cloud.ERP.Blazor.Server.Controllers
             ParameterValue oIdParam = new ParameterValue();
             oIdParam.DBTypeName = "guid";
             oIdParam.Value = ((ConfigDb)View.CurrentObject).Oid;
+
+            #region testcode
             //uow.ExecuteNonQuery(sql, new QueryParameterCollection(isActiveParam, oIdParam));
 
             //string sqlselect = "SELECT * FROM [dbo].[ConfigDb]";
-            string sqlselect = "SELECT * FROM \"ConfigDb\" ";
-            var result = uow.ExecuteQuery(sqlselect);
+            //string sqlselect = "SELECT * FROM \"ConfigDb\" ";
+            #endregion
+
+            QueryExecutorBase ExecuteBase = new QueryDefinition(ReadAppsettingsJson().dbTypeString);
+            QueryExecutorBase readConnectionString = new QueryExecutor(ReadAppsettingsJson().dbTypeString);
+
+            ExecuteBase.Add(readConnectionString);
+            string sqlSelect = ExecuteBase.LoadConfigDb();
+            Console.WriteLine(sqlSelect);
+            var result = uow.ExecuteQuery(sqlSelect);
             foreach (var item in result.ResultSet[0].Rows)
             {
                 if ((Guid)item.Values[0] != ((ConfigDb)View.CurrentObject).Oid)
                 {
                     isActiveParam.Value = false;
                     oIdParam.Value = (Guid)item.Values[0];
+
+                    #region testcode
                     //string sqlUpd = "UPDATE [dbo].[ConfigDb] SET [IsActive] = @p0 WHERE [Oid] = @p1";
                     //uow.ExecuteNonQuery(sqlUpd, new QueryParameterCollection(isActiveParam, oIdParam));
+                    #endregion
                 }
             }
 
@@ -94,14 +113,23 @@ namespace Cloud.ERP.Blazor.Server.Controllers
                 ShowNotification("Success", InformationType.Success, "Database connection successfully updated");
             else
                 ShowNotification("Error", InformationType.Error, "An error has occurred");
+
+            Thread.Sleep(2000);
+            ReloadPage();
         }
 
-        (string json, string appSettingsPath, string dbTypeString) ReadAppsettingsJson()
+        private void ReloadPage()
+        {
+            var navigationManager = ((BlazorApplication)Application).ServiceProvider.GetRequiredService<NavigationManager>();
+            navigationManager.NavigateTo(navigationManager.Uri, forceLoad: true);
+        }
+
+        private (string json, string appSettingsPath, string dbTypeString) ReadAppsettingsJson()
         {
             var appSettingsPath = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "appsettings.json");
             var json = File.ReadAllText(appSettingsPath);
             var jsonSettings = new JsonSerializerSettings();
-            dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(json, jsonSettings);
+            dynamic config = DeserializeJsonObject(json, jsonSettings);
             string dbTypeString = config.ConnectionStrings.ConnectionString;
             Console.WriteLine(dbTypeString);
             return (json: json, appSettingsPath: appSettingsPath, dbTypeString: dbTypeString);
@@ -115,7 +143,8 @@ namespace Cloud.ERP.Blazor.Server.Controllers
             jsonSettings.Converters.Add(new ExpandoObjectConverter());
             jsonSettings.Converters.Add(new StringEnumConverter());
 
-            dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(currentAppSettings.json, jsonSettings);
+            //dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(currentAppSettings.json, jsonSettings);
+            dynamic config = DeserializeJsonObject(currentAppSettings.json, jsonSettings);
             config.ConnectionStrings.ConnectionString = connectionValue;
             config.ConnectionStrings.EasyTestConnectionString = connectionValue;
 
@@ -124,6 +153,12 @@ namespace Cloud.ERP.Blazor.Server.Controllers
             if (writeToFile.IsCompleted)
                 return true;
             return false;
+        }
+
+        private dynamic DeserializeJsonObject(string json, JsonSerializerSettings jsonSettings)
+        {
+            dynamic configResult = JsonConvert.DeserializeObject<ExpandoObject>(json, jsonSettings);
+            return (configResult != null ? configResult : null);
         }
 
         Task WriteToFile(string appSettingsPath, dynamic newJson)

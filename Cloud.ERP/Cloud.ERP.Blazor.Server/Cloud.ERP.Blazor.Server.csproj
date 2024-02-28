@@ -28,6 +28,7 @@
   <ItemGroup>
     <Folder Include="Controllers\CustomAction\" />
     <Folder Include="Images\SvgImages\" />
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="UnusableNodes.xml">

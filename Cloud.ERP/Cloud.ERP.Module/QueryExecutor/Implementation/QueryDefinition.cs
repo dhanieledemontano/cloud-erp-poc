@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Cloud.ERP.Module.QueryExecutor.Implementation
 {
-    public class QueryExecutor : QueryExecutorBase
+    public class QueryDefinition : QueryExecutorBase
     {
-
         private readonly string _connectionString;
 
-        public QueryExecutor(string connectionString) =>
+        public QueryDefinition(string connectionString) =>
             _connectionString = connectionString;
-        
+
         public override void LoadData()
         {
             throw new NotImplementedException();
@@ -26,10 +25,11 @@ namespace Cloud.ERP.Module.QueryExecutor.Implementation
 
         public override string LoadConfigDb()
         {
-            if (!string.IsNullOrEmpty(_connectionString))
+            foreach (QueryExecutorBase executionBase in ExecutorBase)
             {
-                return (_connectionString.Contains("postgre") ? "SELECT * FROM \"ConfigDb\" " : "SELECT * FROM [dbo].[ConfigDb]");
+                return executionBase.LoadConfigDb();
             }
+
             return null;
         }
     }

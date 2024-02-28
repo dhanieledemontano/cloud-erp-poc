@@ -25,23 +25,23 @@ public class Updater : ModuleUpdater {
 
         //ObjectSpace.CommitChanges(); //Uncomment this line to persist created object(s).
 
-        var mssqlConn = ObjectSpace.FirstOrDefault<ConfigDb>(x => x.ConnectionName == "Microsoft SQL");
-        if (mssqlConn is null)
-        {
-            mssqlConn = ObjectSpace.CreateObject<ConfigDb>();
-            mssqlConn.ConnectionName = "Microsoft SQL";
-            mssqlConn.ConnectionValue = "XpoProvider=MSSqlServer;User=sa;Password=1t_r3publ1c;Pooling=false;Data Source=localhost,1533;Initial Catalog=CloudERPDb;Encrypt=False";
-            mssqlConn.IsActive = true;
-        }
-        var postgresConn = ObjectSpace.FirstOrDefault<ConfigDb>(x => x.ConnectionName == "Postgres");
-        if (postgresConn is null)
-        {
-            postgresConn = ObjectSpace.CreateObject<ConfigDb>();
-            postgresConn.ConnectionName = "Postgres";
-            postgresConn.ConnectionValue = "XpoProvider=Postgres;Host=localhost;Port=5532;User ID=postgres;Password=1t_r3publ1c;Database=CloudERPDb;Encoding=UNICODE";
-            postgresConn.IsActive = true;
-        }
-        ObjectSpace.CommitChanges();
+        //var mssqlConn = ObjectSpace.FirstOrDefault<ConfigDb>(x => x.ConnectionName == "Microsoft SQL");
+        //if (mssqlConn is null)
+        //{
+        //    mssqlConn = ObjectSpace.CreateObject<ConfigDb>();
+        //    mssqlConn.ConnectionName = "Microsoft SQL";
+        //    mssqlConn.ConnectionValue = "XpoProvider=MSSqlServer;User=sa;Password=1t_r3publ1c;Pooling=false;Data Source=localhost,1533;Initial Catalog=ExampleDb;Encrypt=False";
+        //    mssqlConn.IsActive = true;
+        //}
+        //var postgresConn = ObjectSpace.FirstOrDefault<ConfigDb>(x => x.ConnectionName == "Postgres");
+        //if (postgresConn is null)
+        //{
+        //    postgresConn = ObjectSpace.CreateObject<ConfigDb>();
+        //    postgresConn.ConnectionName = "Postgres";
+        //    postgresConn.ConnectionValue = "XpoProvider=Postgres;Host=localhost;Port=5532;User ID=postgres;Password=1t_r3publ1c;Database=ExampleDb;Encoding=UNICODE";
+        //    postgresConn.IsActive = true;
+        //}
+        //ObjectSpace.CommitChanges();
     }
     public override void UpdateDatabaseBeforeUpdateSchema() {
         base.UpdateDatabaseBeforeUpdateSchema();
