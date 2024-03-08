@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.ERP.Blazor.Server", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.ERP.Win", "Cloud.ERP.Win\Cloud.ERP.Win.csproj", "{E8D88884-D407-4E2D-B100-2F5FD19AA855}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreSQLMigrationUtility", "SQLServerToPostgresSQLUtility\PostgreSQLMigrationUtility\PostgreSQLMigrationUtility.csproj", "{F7E092B8-1396-4774-918F-5AC616CE196E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBMigration.Win", "SQLServerToPostgresSQLUtility\PostgreSQLMigrationUtility\DBMigration.Win.csproj", "{F7E092B8-1396-4774-918F-5AC616CE196E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
