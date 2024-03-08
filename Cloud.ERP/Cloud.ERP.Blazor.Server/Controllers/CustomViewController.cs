@@ -67,11 +67,11 @@ namespace Cloud.ERP.Blazor.Server.Controllers
             //string sqlselect = "SELECT * FROM \"ConfigDb\" ";
             #endregion
 
-            QueryExecutorBase ExecuteBase = new QueryDefinition(ReadAppsettingsJson().dbTypeString);
+            QueryExecutorBase executeBase = new QueryDefinition(ReadAppsettingsJson().dbTypeString);
             QueryExecutorBase readConnectionString = new QueryExecutor(ReadAppsettingsJson().dbTypeString);
 
-            ExecuteBase.Add(readConnectionString);
-            string sqlSelect = ExecuteBase.LoadConfigDb();
+            executeBase.Add(readConnectionString);
+            string sqlSelect = executeBase.LoadConfigDb();
             Console.WriteLine(sqlSelect);
             var result = uow.ExecuteQuery(sqlSelect);
             foreach (var item in result.ResultSet[0].Rows)
@@ -114,7 +114,6 @@ namespace Cloud.ERP.Blazor.Server.Controllers
             else
                 ShowNotification("Error", InformationType.Error, "An error has occurred");
 
-            Thread.Sleep(2000);
             ReloadPage();
         }
 
