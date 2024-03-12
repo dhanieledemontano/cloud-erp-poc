@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Cloud.ERP.Module.BusinessObjects.Base;
 using Cloud.ERP.Module.BusinessObjects.Stock;
+using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.ExpressApp.Security;
 using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using DevExpress.XtraRichEdit.Model;
@@ -51,8 +53,6 @@ namespace Cloud.ERP.Module.BusinessObjects.Product
         //        return fSubCategoryItems;
         //    }
         //}
-
-
 
         public string Name
         {

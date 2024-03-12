@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Server.Circuits;
 using DevExpress.ExpressApp.Xpo;
 using Cloud.ERP.Blazor.Server.Services;
+using DevExpress.ExpressApp.Security;
+using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 
 namespace Cloud.ERP.Blazor.Server;
 
@@ -28,10 +30,14 @@ public class Startup {
         services.AddXaf(Configuration, builder => {
             builder.UseApplication<ERPBlazorApplication>();
             builder.Modules
+                .AddConditionalAppearance()
+                .AddValidation(options => {
+                    options.AllowValidationDetailsAccess = false;
+                })
                 .Add<Cloud.ERP.Module.ERPModule>()
             	.Add<ERPBlazorModule>();
             builder.ObjectSpaceProviders
-                .AddXpo((serviceProvider, options) => {
+                .AddSecuredXpo((serviceProvider, options) => {
                     string connectionString = null;
                     if(Configuration.GetConnectionString("ConnectionString") != null) {
                         connectionString = Configuration.GetConnectionString("ConnectionString");
@@ -47,6 +53,21 @@ public class Startup {
                     options.UseSharedDataStoreProvider = true;
                 })
                 .AddNonPersistent();
+            builder.Security
+                .UseIntegratedMode(options => {
+                    options.RoleType = typeof(PermissionPolicyRole);
+                    options.UserType = typeof(Cloud.ERP.Module.BusinessObjects.User.ApplicationUser);
+                    options.UserLoginInfoType = typeof(Cloud.ERP.Module.BusinessObjects.User.ApplicationUserLoginInfo);
+                    options.UseXpoPermissionsCaching();
+                    options.Events.OnSecurityStrategyCreated += securityStrategy => {
+                        ((SecurityStrategy)securityStrategy).PermissionsReloadMode = PermissionsReloadMode.NoCache;
+                    };
+                }).AddPasswordAuthentication(options => {
+                    options.IsSupportChangePassword = true;
+                });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
+                options.LoginPath = "/LoginPage";
+            });
         });
     }
 
@@ -64,6 +85,8 @@ public class Startup {
         app.UseRequestLocalization();
         app.UseStaticFiles();
         app.UseRouting();
+        app.UseAuthentication();
+        app.UseAuthorization();
         app.UseXaf();
         app.UseEndpoints(endpoints => {
             endpoints.MapXafEndpoints();
