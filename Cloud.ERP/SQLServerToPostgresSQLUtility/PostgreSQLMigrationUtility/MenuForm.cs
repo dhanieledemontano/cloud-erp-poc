@@ -38,32 +38,9 @@ namespace PostgreSQLMigrationUtility
             frm.ShowDialog();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://www.techsapphire.net/");
-        }
-
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Windows.Forms.Clipboard.SetText("+91-9360223756");
-            MessageBox.Show("Phone No. Copied");
-            
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Windows.Forms.Clipboard.SetText("contact@techsapphire.net");
-            MessageBox.Show("Email Copied");
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.paypal.me/bimlamehla");
         }
     }
 }

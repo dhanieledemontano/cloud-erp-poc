@@ -32,6 +32,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtPostgresPort = new System.Windows.Forms.TextBox();
             this.btnPostgresCon = new System.Windows.Forms.Button();
             this.txtPostgreSQLPassword = new System.Windows.Forms.TextBox();
             this.txtPostgreSQLUsername = new System.Windows.Forms.TextBox();
@@ -40,6 +41,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSQLPort = new System.Windows.Forms.TextBox();
             this.btnSQLTest = new System.Windows.Forms.Button();
             this.txtSQLPassword = new System.Windows.Forms.TextBox();
             this.txtSQLUsername = new System.Windows.Forms.TextBox();
@@ -47,14 +49,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtMigrationLocation = new System.Windows.Forms.TextBox();
             this.btnFolderBrowser = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.txtSQLPort = new System.Windows.Forms.TextBox();
-            this.txtPostgresPort = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -68,18 +67,17 @@
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(537, 489);
+            this.panel1.Size = new System.Drawing.Size(437, 395);
             this.panel1.TabIndex = 0;
             // 
             // btnClose
             // 
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(403, 438);
+            this.btnClose.Location = new System.Drawing.Point(345, 362);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 5;
@@ -90,7 +88,7 @@
             // btnSave
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(322, 438);
+            this.btnSave.Location = new System.Drawing.Point(264, 362);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -108,20 +106,29 @@
             this.groupBox3.Controls.Add(this.txtPostgresSQL);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(43, 279);
+            this.groupBox3.Location = new System.Drawing.Point(11, 229);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(435, 127);
+            this.groupBox3.Size = new System.Drawing.Size(410, 127);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PostgreSQL";
+            // 
+            // txtPostgresPort
+            // 
+            this.txtPostgresPort.Location = new System.Drawing.Point(346, 15);
+            this.txtPostgresPort.Name = "txtPostgresPort";
+            this.txtPostgresPort.Size = new System.Drawing.Size(57, 20);
+            this.txtPostgresPort.TabIndex = 8;
+            this.txtPostgresPort.TabStop = false;
+            this.txtPostgresPort.Text = "5432";
             // 
             // btnPostgresCon
             // 
             this.btnPostgresCon.Location = new System.Drawing.Point(346, 50);
             this.btnPostgresCon.Name = "btnPostgresCon";
-            this.btnPostgresCon.Size = new System.Drawing.Size(75, 23);
+            this.btnPostgresCon.Size = new System.Drawing.Size(57, 23);
             this.btnPostgresCon.TabIndex = 7;
-            this.btnPostgresCon.Text = "Test Con";
+            this.btnPostgresCon.Text = "Test";
             this.btnPostgresCon.UseVisualStyleBackColor = true;
             this.btnPostgresCon.Click += new System.EventHandler(this.btnPostgresCon_Click);
             // 
@@ -185,20 +192,29 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(43, 138);
+            this.groupBox2.Location = new System.Drawing.Point(11, 88);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(435, 135);
+            this.groupBox2.Size = new System.Drawing.Size(410, 135);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "SQL Server ";
+            // 
+            // txtSQLPort
+            // 
+            this.txtSQLPort.Location = new System.Drawing.Point(346, 24);
+            this.txtSQLPort.Name = "txtSQLPort";
+            this.txtSQLPort.Size = new System.Drawing.Size(57, 20);
+            this.txtSQLPort.TabIndex = 7;
+            this.txtSQLPort.TabStop = false;
+            this.txtSQLPort.Text = "1433";
             // 
             // btnSQLTest
             // 
             this.btnSQLTest.Location = new System.Drawing.Point(346, 59);
             this.btnSQLTest.Name = "btnSQLTest";
-            this.btnSQLTest.Size = new System.Drawing.Size(75, 23);
+            this.btnSQLTest.Size = new System.Drawing.Size(57, 23);
             this.btnSQLTest.TabIndex = 6;
-            this.btnSQLTest.Text = "Test Con";
+            this.btnSQLTest.Text = "Test";
             this.btnSQLTest.UseVisualStyleBackColor = true;
             this.btnSQLTest.Click += new System.EventHandler(this.btnSQLTest_Click);
             // 
@@ -252,24 +268,14 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Server";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(191, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Configuration";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtMigrationLocation);
             this.groupBox1.Controls.Add(this.btnFolderBrowser);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(43, 61);
+            this.groupBox1.Location = new System.Drawing.Point(11, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(435, 71);
+            this.groupBox1.Size = new System.Drawing.Size(410, 71);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
@@ -304,39 +310,21 @@
             // 
             this.folderBrowserDialog1.SelectedPath = "C:";
             // 
-            // txtSQLPort
-            // 
-            this.txtSQLPort.Location = new System.Drawing.Point(346, 24);
-            this.txtSQLPort.Name = "txtSQLPort";
-            this.txtSQLPort.Size = new System.Drawing.Size(57, 20);
-            this.txtSQLPort.TabIndex = 7;
-            this.txtSQLPort.TabStop = false;
-            this.txtSQLPort.Text = "1433";
-            // 
-            // txtPostgresPort
-            // 
-            this.txtPostgresPort.Location = new System.Drawing.Point(346, 15);
-            this.txtPostgresPort.Name = "txtPostgresPort";
-            this.txtPostgresPort.Size = new System.Drawing.Size(57, 20);
-            this.txtPostgresPort.TabIndex = 8;
-            this.txtPostgresPort.TabStop = false;
-            this.txtPostgresPort.Text = "5432";
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(537, 489);
+            this.ClientSize = new System.Drawing.Size(437, 395);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SettingsForm";
+            this.Text = "Source Migration Configuration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsForm_FormClosing);
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -350,7 +338,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtMigrationLocation;
         private System.Windows.Forms.Button btnFolderBrowser;
