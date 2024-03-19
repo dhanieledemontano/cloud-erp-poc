@@ -29,27 +29,26 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtlogs = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnStartMigration = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
             this.chkListObjects = new System.Windows.Forms.CheckedListBox();
             this.cmbDatabases = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.simpleButton2);
+            this.panel1.Controls.Add(this.simpleButton1);
             this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.btnStartMigration);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.cmbDatabases);
             this.panel1.Controls.Add(this.label1);
@@ -58,6 +57,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(611, 376);
             this.panel1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtlogs);
+            this.groupBox2.Location = new System.Drawing.Point(309, 35);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(292, 302);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Log";
             // 
             // txtlogs
             // 
@@ -69,28 +78,6 @@
             this.txtlogs.Name = "txtlogs";
             this.txtlogs.Size = new System.Drawing.Size(286, 283);
             this.txtlogs.TabIndex = 8;
-            // 
-            // btnClose
-            // 
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(526, 343);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnStartMigration
-            // 
-            this.btnStartMigration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStartMigration.Location = new System.Drawing.Point(445, 343);
-            this.btnStartMigration.Name = "btnStartMigration";
-            this.btnStartMigration.Size = new System.Drawing.Size(75, 23);
-            this.btnStartMigration.TabIndex = 6;
-            this.btnStartMigration.Text = "Start";
-            this.btnStartMigration.UseVisualStyleBackColor = true;
-            this.btnStartMigration.Click += new System.EventHandler(this.btnStartMigration_Click);
             // 
             // groupBox1
             // 
@@ -117,10 +104,11 @@
             // 
             // chkListObjects
             // 
+            this.chkListObjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkListObjects.FormattingEnabled = true;
             this.chkListObjects.Location = new System.Drawing.Point(7, 48);
             this.chkListObjects.Name = "chkListObjects";
-            this.chkListObjects.Size = new System.Drawing.Size(279, 244);
+            this.chkListObjects.Size = new System.Drawing.Size(279, 240);
             this.chkListObjects.TabIndex = 0;
             // 
             // cmbDatabases
@@ -149,15 +137,23 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // groupBox2
+            // simpleButton1
             // 
-            this.groupBox2.Controls.Add(this.txtlogs);
-            this.groupBox2.Location = new System.Drawing.Point(309, 35);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(292, 302);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Log";
+            this.simpleButton1.Location = new System.Drawing.Point(445, 343);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 6;
+            this.simpleButton1.Text = "&Start";
+            this.simpleButton1.Click += new System.EventHandler(this.btnStartMigration_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(523, 343);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 7;
+            this.simpleButton2.Text = "&Close";
+            this.simpleButton2.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // SourceMigrationForm
             // 
@@ -174,10 +170,10 @@
             this.Load += new System.EventHandler(this.SourceMigrationForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -189,11 +185,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckedListBox chkListObjects;
         private System.Windows.Forms.ComboBox cmbDatabases;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnStartMigration;
         private System.Windows.Forms.TextBox txtlogs;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.CheckBox chkSelectAll;
         private System.Windows.Forms.GroupBox groupBox2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

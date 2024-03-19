@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtPostgresPort = new System.Windows.Forms.TextBox();
             this.btnPostgresCon = new System.Windows.Forms.Button();
@@ -54,6 +52,8 @@
             this.btnFolderBrowser = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -62,39 +62,16 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.btnSave);
+            this.panel1.Controls.Add(this.simpleButton2);
+            this.panel1.Controls.Add(this.simpleButton1);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(437, 395);
+            this.panel1.Size = new System.Drawing.Size(398, 348);
             this.panel1.TabIndex = 0;
-            // 
-            // btnClose
-            // 
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(345, 362);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 5;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(264, 362);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox3
             // 
@@ -106,51 +83,51 @@
             this.groupBox3.Controls.Add(this.txtPostgresSQL);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(11, 229);
+            this.groupBox3.Location = new System.Drawing.Point(11, 200);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(410, 127);
+            this.groupBox3.Size = new System.Drawing.Size(373, 111);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PostgreSQL";
             // 
             // txtPostgresPort
             // 
-            this.txtPostgresPort.Location = new System.Drawing.Point(346, 15);
+            this.txtPostgresPort.Location = new System.Drawing.Point(306, 22);
             this.txtPostgresPort.Name = "txtPostgresPort";
             this.txtPostgresPort.Size = new System.Drawing.Size(57, 20);
-            this.txtPostgresPort.TabIndex = 8;
-            this.txtPostgresPort.TabStop = false;
+            this.txtPostgresPort.TabIndex = 2;
             this.txtPostgresPort.Text = "5432";
+            this.txtPostgresPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnPostgresCon
             // 
-            this.btnPostgresCon.Location = new System.Drawing.Point(346, 50);
+            this.btnPostgresCon.Location = new System.Drawing.Point(306, 46);
             this.btnPostgresCon.Name = "btnPostgresCon";
             this.btnPostgresCon.Size = new System.Drawing.Size(57, 23);
-            this.btnPostgresCon.TabIndex = 7;
+            this.btnPostgresCon.TabIndex = 4;
             this.btnPostgresCon.Text = "Test";
             this.btnPostgresCon.UseVisualStyleBackColor = true;
             this.btnPostgresCon.Click += new System.EventHandler(this.btnPostgresCon_Click);
             // 
             // txtPostgreSQLPassword
             // 
-            this.txtPostgreSQLPassword.Location = new System.Drawing.Point(163, 85);
+            this.txtPostgreSQLPassword.Location = new System.Drawing.Point(123, 74);
             this.txtPostgreSQLPassword.Name = "txtPostgreSQLPassword";
             this.txtPostgreSQLPassword.PasswordChar = '-';
             this.txtPostgreSQLPassword.Size = new System.Drawing.Size(177, 20);
-            this.txtPostgreSQLPassword.TabIndex = 11;
+            this.txtPostgreSQLPassword.TabIndex = 5;
             // 
             // txtPostgreSQLUsername
             // 
-            this.txtPostgreSQLUsername.Location = new System.Drawing.Point(163, 52);
+            this.txtPostgreSQLUsername.Location = new System.Drawing.Point(123, 48);
             this.txtPostgreSQLUsername.Name = "txtPostgreSQLUsername";
             this.txtPostgreSQLUsername.Size = new System.Drawing.Size(177, 20);
-            this.txtPostgreSQLUsername.TabIndex = 10;
+            this.txtPostgreSQLUsername.TabIndex = 3;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 22);
+            this.label8.Location = new System.Drawing.Point(22, 25);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 6;
@@ -158,16 +135,16 @@
             // 
             // txtPostgresSQL
             // 
-            this.txtPostgresSQL.Location = new System.Drawing.Point(163, 15);
+            this.txtPostgresSQL.Location = new System.Drawing.Point(123, 22);
             this.txtPostgresSQL.Name = "txtPostgresSQL";
             this.txtPostgresSQL.Size = new System.Drawing.Size(177, 20);
-            this.txtPostgresSQL.TabIndex = 9;
+            this.txtPostgresSQL.TabIndex = 1;
             this.txtPostgresSQL.Text = "localhost";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(22, 55);
+            this.label7.Location = new System.Drawing.Point(22, 51);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 13);
             this.label7.TabIndex = 7;
@@ -176,7 +153,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 88);
+            this.label6.Location = new System.Drawing.Point(24, 77);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 13);
             this.label6.TabIndex = 8;
@@ -194,33 +171,33 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(11, 88);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(410, 135);
+            this.groupBox2.Size = new System.Drawing.Size(373, 106);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "SQL Server ";
             // 
             // txtSQLPort
             // 
-            this.txtSQLPort.Location = new System.Drawing.Point(346, 24);
+            this.txtSQLPort.Location = new System.Drawing.Point(306, 24);
             this.txtSQLPort.Name = "txtSQLPort";
             this.txtSQLPort.Size = new System.Drawing.Size(57, 20);
-            this.txtSQLPort.TabIndex = 7;
-            this.txtSQLPort.TabStop = false;
+            this.txtSQLPort.TabIndex = 2;
             this.txtSQLPort.Text = "1433";
+            this.txtSQLPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnSQLTest
             // 
-            this.btnSQLTest.Location = new System.Drawing.Point(346, 59);
+            this.btnSQLTest.Location = new System.Drawing.Point(306, 48);
             this.btnSQLTest.Name = "btnSQLTest";
             this.btnSQLTest.Size = new System.Drawing.Size(57, 23);
-            this.btnSQLTest.TabIndex = 6;
+            this.btnSQLTest.TabIndex = 4;
             this.btnSQLTest.Text = "Test";
             this.btnSQLTest.UseVisualStyleBackColor = true;
             this.btnSQLTest.Click += new System.EventHandler(this.btnSQLTest_Click);
             // 
             // txtSQLPassword
             // 
-            this.txtSQLPassword.Location = new System.Drawing.Point(163, 94);
+            this.txtSQLPassword.Location = new System.Drawing.Point(123, 76);
             this.txtSQLPassword.Name = "txtSQLPassword";
             this.txtSQLPassword.PasswordChar = '-';
             this.txtSQLPassword.Size = new System.Drawing.Size(177, 20);
@@ -228,23 +205,22 @@
             // 
             // txtSQLUsername
             // 
-            this.txtSQLUsername.Location = new System.Drawing.Point(163, 61);
+            this.txtSQLUsername.Location = new System.Drawing.Point(123, 50);
             this.txtSQLUsername.Name = "txtSQLUsername";
             this.txtSQLUsername.Size = new System.Drawing.Size(177, 20);
-            this.txtSQLUsername.TabIndex = 4;
+            this.txtSQLUsername.TabIndex = 3;
             // 
             // txtSQLServer
             // 
-            this.txtSQLServer.Location = new System.Drawing.Point(163, 24);
+            this.txtSQLServer.Location = new System.Drawing.Point(123, 24);
             this.txtSQLServer.Name = "txtSQLServer";
             this.txtSQLServer.Size = new System.Drawing.Size(177, 20);
-            this.txtSQLServer.TabIndex = 3;
-            this.txtSQLServer.Text = ".";
+            this.txtSQLServer.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 97);
+            this.label5.Location = new System.Drawing.Point(24, 79);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 2;
@@ -253,7 +229,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 64);
+            this.label4.Location = new System.Drawing.Point(24, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 1;
@@ -262,7 +238,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 31);
+            this.label3.Location = new System.Drawing.Point(24, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 0;
@@ -275,24 +251,24 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(11, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(410, 71);
+            this.groupBox1.Size = new System.Drawing.Size(373, 71);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
             // 
             // txtMigrationLocation
             // 
-            this.txtMigrationLocation.Location = new System.Drawing.Point(163, 29);
+            this.txtMigrationLocation.Location = new System.Drawing.Point(123, 29);
             this.txtMigrationLocation.Name = "txtMigrationLocation";
             this.txtMigrationLocation.Size = new System.Drawing.Size(177, 20);
-            this.txtMigrationLocation.TabIndex = 2;
+            this.txtMigrationLocation.TabIndex = 1;
             // 
             // btnFolderBrowser
             // 
-            this.btnFolderBrowser.Location = new System.Drawing.Point(346, 26);
+            this.btnFolderBrowser.Location = new System.Drawing.Point(306, 27);
             this.btnFolderBrowser.Name = "btnFolderBrowser";
-            this.btnFolderBrowser.Size = new System.Drawing.Size(38, 23);
-            this.btnFolderBrowser.TabIndex = 1;
+            this.btnFolderBrowser.Size = new System.Drawing.Size(57, 23);
+            this.btnFolderBrowser.TabIndex = 2;
             this.btnFolderBrowser.Text = "...";
             this.btnFolderBrowser.UseVisualStyleBackColor = true;
             this.btnFolderBrowser.Click += new System.EventHandler(this.btnFolderBrowser_Click);
@@ -310,12 +286,30 @@
             // 
             this.folderBrowserDialog1.SelectedPath = "C:";
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(226, 317);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 4;
+            this.simpleButton1.Text = "&Save";
+            this.simpleButton1.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(307, 317);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 5;
+            this.simpleButton2.Text = "&Close";
+            this.simpleButton2.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(437, 395);
+            this.ClientSize = new System.Drawing.Size(398, 348);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -342,8 +336,6 @@
         private System.Windows.Forms.TextBox txtMigrationLocation;
         private System.Windows.Forms.Button btnFolderBrowser;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtPostgreSQLPassword;
         private System.Windows.Forms.TextBox txtPostgreSQLUsername;
@@ -363,5 +355,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TextBox txtSQLPort;
         private System.Windows.Forms.TextBox txtPostgresPort;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
