@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtPostgresPort = new System.Windows.Forms.TextBox();
             this.btnPostgresCon = new System.Windows.Forms.Button();
@@ -52,8 +54,6 @@
             this.btnFolderBrowser = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -73,6 +73,24 @@
             this.panel1.Size = new System.Drawing.Size(398, 348);
             this.panel1.TabIndex = 0;
             // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(307, 317);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 5;
+            this.simpleButton2.Text = "&Close";
+            this.simpleButton2.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(226, 317);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 4;
+            this.simpleButton1.Text = "&Save";
+            this.simpleButton1.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtPostgresPort);
@@ -88,7 +106,7 @@
             this.groupBox3.Size = new System.Drawing.Size(373, 111);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "PostgreSQL";
+            this.groupBox3.Text = "PostgreSQL - Target";
             // 
             // txtPostgresPort
             // 
@@ -174,7 +192,7 @@
             this.groupBox2.Size = new System.Drawing.Size(373, 106);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "SQL Server ";
+            this.groupBox2.Text = "SQL Server  - Source";
             // 
             // txtSQLPort
             // 
@@ -285,24 +303,6 @@
             // folderBrowserDialog1
             // 
             this.folderBrowserDialog1.SelectedPath = "C:";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(226, 317);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 4;
-            this.simpleButton1.Text = "&Save";
-            this.simpleButton1.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(307, 317);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 5;
-            this.simpleButton2.Text = "&Close";
-            this.simpleButton2.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // SettingsForm
             // 

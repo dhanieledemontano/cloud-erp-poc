@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtlogs = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -37,8 +39,6 @@
             this.cmbDatabases = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -58,6 +58,24 @@
             this.panel1.Size = new System.Drawing.Size(611, 376);
             this.panel1.TabIndex = 0;
             // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(523, 343);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 7;
+            this.simpleButton2.Text = "&Close";
+            this.simpleButton2.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(445, 343);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 6;
+            this.simpleButton1.Text = "&Start";
+            this.simpleButton1.Click += new System.EventHandler(this.btnStartMigration_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtlogs);
@@ -76,6 +94,7 @@
             this.txtlogs.Margin = new System.Windows.Forms.Padding(5);
             this.txtlogs.Multiline = true;
             this.txtlogs.Name = "txtlogs";
+            this.txtlogs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtlogs.Size = new System.Drawing.Size(286, 283);
             this.txtlogs.TabIndex = 8;
             // 
@@ -136,24 +155,6 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Location = new System.Drawing.Point(445, 343);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 6;
-            this.simpleButton1.Text = "&Start";
-            this.simpleButton1.Click += new System.EventHandler(this.btnStartMigration_Click);
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(523, 343);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 7;
-            this.simpleButton2.Text = "&Close";
-            this.simpleButton2.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // SourceMigrationForm
             // 

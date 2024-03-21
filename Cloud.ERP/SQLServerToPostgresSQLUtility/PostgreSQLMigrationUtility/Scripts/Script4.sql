@@ -25,7 +25,8 @@ begin
 
 	declare @sql varchar(8000) = ''
 
-	select @sql = 'bcp "' + @query2 + '" queryout "' + @folderPath + replace( replace( lower( @table),'._','.'),'"','') + '.csv" -c -t~ -S "' + @@servername + '" -U ' + '"{User}"' + ' -P ' + '"{Pass}"' + ' -d ' + '"{DB}"'
+	--select @sql = 'bcp "' + @query2 + '" queryout "' + @folderPath + replace( replace( lower( @table),'._','.'),'"','') + '.csv" -c -t~ -S "' + @@servername + '" -U ' + '"{User}"' + ' -P ' + '"{Pass}"' + ' -d ' + '"{DB}"'
+	select @sql = 'bcp "' + @query2 + '" queryout "' + @folderPath + replace( replace(( @table),'._','.'),'"','') + '.csv" -c -t~ -S "' + @@servername + '" -U ' + '"{User}"' + ' -P ' + '"{Pass}"' + ' -d ' + '"{DB}"'
 
 	insert into @bcptable
 	select @sql

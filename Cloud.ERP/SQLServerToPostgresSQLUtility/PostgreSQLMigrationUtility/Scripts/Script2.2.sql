@@ -11,6 +11,13 @@ select cast('create table ' + (
 						end + '.' + lower(table_name))
 			) + char(13) + '('  + STUFF((
 				select ', ' + char(13) + lower( char(9) + lower (
+			--(case TABLE_SCHEMA
+			--			when 'dbo'
+			--				then 'public'
+			--			else  ('"' + TABLE_SCHEMA + '"')
+			--			end + '.' + (table_name))
+			--) + char(13) + '('  + STUFF((
+			--	select ', ' + char(13) + ( char(9) +  (
 							case column_name
 								when 'order'
 									then '"order"'

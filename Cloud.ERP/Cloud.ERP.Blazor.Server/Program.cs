@@ -15,7 +15,7 @@ public class Program : IDesignTimeApplicationFactory {
         return args.Any(arg => arg.TrimStart('/').TrimStart('-').ToLower() == argument.ToLower());
     }
     public static int Main(string[] args) {
-        LogManager.SetTransport(new NamedPipeLogger("XPOProfilerNamedPipe"));
+        LogManager.SetTransport(new NamedPipeLogger("XpoProfilerNamedPipe"));
 
         if(ContainsArgument(args, "help") || ContainsArgument(args, "h")) {
             Console.WriteLine("Updates the database when its version does not match the application's version.");
