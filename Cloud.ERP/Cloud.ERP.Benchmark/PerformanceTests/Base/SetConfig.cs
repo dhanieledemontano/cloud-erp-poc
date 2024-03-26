@@ -12,6 +12,7 @@ namespace Cloud.ERP.Benchmark.PerformanceTests.Base
     public class SetConfig
     {
         public static string XPOConnectionStrings => "XpoProvider=MSSqlServer;" + ConfigurationManager.ConnectionStrings["ConnectionString_XPO"].ConnectionString;
+        public static string MssqlConnectionStrings => ConfigurationManager.ConnectionStrings["ConnectionString_Mssql"].ConnectionString;
         public static string EFCoreConnectionStrings => ConfigurationManager.ConnectionStrings["ConnectionString_EFCore"].ConnectionString;
         public static string PostgreConnectionStrings => ConfigurationManager.ConnectionStrings["ConnectionString_Postgres"].ConnectionString;
 

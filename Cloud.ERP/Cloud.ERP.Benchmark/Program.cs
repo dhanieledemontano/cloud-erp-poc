@@ -1,121 +1,72 @@
-﻿using BenchmarkDotNet.Attributes;
+﻿using System.Data.SqlClient;
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using System.Reflection;
 using Newtonsoft.Json;
 using System.Dynamic;
+using Cloud.ERP.Benchmark.PerformanceTests;
 using Cloud.ERP.Benchmark.PerformanceTests.Base;
+using Cloud.ERP.Benchmark.PerformanceTests.Base.DBUpdater;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 
+UpdatePostgresDb();
+UpdateMssqlDb();
 
 BenchmarkSwitcher.FromAssembly(Assembly.GetExecutingAssembly()).Run(args);
-
-
-//void TestPgsql()
-//{
-//    string cnString = SetConfig.PostgreConnectionStrings;
-//    NpgsqlConnection connection = new NpgsqlConnection(cnString);
-
-
-//    try
-//    {
-//        connection.Open();
-//        Console.WriteLine("Connected to PostgreSQL!");
-//    }
-//    catch (Exception ex)
-//    {
-//        Console.WriteLine($"Error: {ex.Message}");
-//    }
-//    finally
-//    {
-//        connection.Close();
-//    }
-
-//    string query = "SELECT * FROM  \"ConfigDb\" ";
-//    NpgsqlCommand queryCommand = new NpgsqlCommand(query, connection);
-
-//    try
-//    {
-//        connection.Open();
-//        NpgsqlDataReader reader = queryCommand.ExecuteReader();
-//        while (reader.Read())
-//        {
-//            Console.WriteLine($"Connection Name: {reader["ConnectionName"]} ");
-//        }
-//    }
-//    catch (Exception ex)
-//    {
-//        Console.WriteLine($"Error: {ex.Message}");
-//    }
-//    finally
-//    {
-//        connection.Close();
-//    }
-
-//}
+void UpdatePostgresDb()
+{
+    string cnString = SetConfig.PostgreConnectionStrings;
+    NpgsqlConnection connection = new NpgsqlConnection(cnString);
+    PostgresDBUpdater.InitializeDb(connection);
+}
+void UpdateMssqlDb()
+{
+    string cnString = SetConfig.MssqlConnectionStrings;
+    SqlConnection connection = new SqlConnection(cnString);
+    MssqlDBUpdater.InitializeDb(connection);
+}
 
 
 
-
-#region MyRegion
-//string ReadAppsettingsJson()
-//{
-//    var appSettingsPath = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "appsettings.json");
-//    var json = File.ReadAllText(appSettingsPath);
-//    var jsonSettings = new JsonSerializerSettings();
-//    dynamic config = DeserializeJsonObject(json, jsonSettings);
-//    return json;
-//}
-
-//dynamic DeserializeJsonObject(string json, JsonSerializerSettings jsonSettings)
-//{
-//    dynamic configResult = JsonConvert.DeserializeObject<ExpandoObject>(json, jsonSettings);
-//    return (configResult != null ? configResult : null);
-//}
-#endregion
-
-
+[Config(typeof(AntiVirusPassConfig))]
 [MemoryDiagnoser]
-[ShortRunJob]
+//[ShortRunJob]
 //[MediumRunJob]
 //[LongRunJob]
-public class CloudERPBenchmarks
+public class CloudErpBenchmarks
 {
     //Always run in Release build
 
-    [Benchmark]
-    public void TestBenchmark()
+    List<int>? _list;
+
+    [Params(1_000, 5_000, 8_000, 10_000)]
+    public int ListSize;
+
+    [GlobalSetup]
+    public void Setup()
     {
-        //Test something
-        //TestPostgres();
+        _list = new List<int>();
+        for (int i = 0; i < ListSize; i++)
+        {
+            _list.Add(i);
+        }
     }
 
     [Benchmark]
-    public void TestPostgres()
+    public void PostgreInsertContact()
     {
         string cnString = SetConfig.PostgreConnectionStrings;
         NpgsqlConnection connection = new NpgsqlConnection(cnString);
+        PostgreTestProvider.InsertContact(_list.Count, connection);
+    }
 
-        string query = "SELECT * FROM  \"ConfigDb\" ";
-        NpgsqlCommand queryCommand = new NpgsqlCommand(query, connection);
-
-        try
-        {
-            connection.Open();
-            NpgsqlDataReader reader = queryCommand.ExecuteReader();
-            while (reader.Read())
-            {
-                Console.WriteLine($"Connection Name: {reader["ConnectionName"]} ");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-        }
-        finally
-        {
-            connection.Close();
-        }
+    [Benchmark]
+    public void MssqlInsertContact()
+    {
+        string cnString = SetConfig.MssqlConnectionStrings;
+        SqlConnection connection = new SqlConnection(cnString);
+        MssqlTestProvider.InsertContact(_list.Count, connection);
     }
 }
 
